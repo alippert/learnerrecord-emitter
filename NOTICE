@@ -1,0 +1,7 @@
+@learnerrecord/emitter
+Copyright 2026 Andrew Lippert
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+It sends activity to LPAI, the Learning Logbook, using LPAI's xAPI profile
+(https://id.learnerrecord.org/xapi/profile) and the ADL video profile
+(https://w3id.org/xapi/video).

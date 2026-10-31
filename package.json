@@ -1,0 +1,58 @@
+{
+  "name": "@learnerrecord/emitter",
+  "version": "0.5.0",
+  "description": "Send a learning platform's activity to LPAI, the Learning Logbook, as xAPI statements: batching, retries, ordering, and LPAI's profile.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "xapi",
+    "lms",
+    "learning-record",
+    "lpai",
+    "learner-record"
+  ],
+  "homepage": "https://id.learnerrecord.org/xapi/profile",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alippert/learnerrecord-emitter.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "next",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && tsc -p tsconfig.cjs.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', JSON.stringify({ type: 'commonjs' }))\"",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit"
+  },
+  "bugs": {
+    "url": "https://github.com/alippert/learnerrecord-emitter/issues"
+  },
+  "devDependencies": {
+    "jose": "5.9.6",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}

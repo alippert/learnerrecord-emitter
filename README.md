@@ -10,7 +10,7 @@ This package is the reference client. The integration contract itself doesn't de
 | JSON Schemas | `https://id.learnerrecord.org/schemas/` |
 | OpenAPI description | `https://id.learnerrecord.org/openapi/v1.json` |
 
-The identifiers are permanent. The site that serves these documents is not yet published; until it is, LPAI provides the same files on request.
+The identifiers are permanent, and each address serves its document.
 
 > **Pre-release (0.x).** The API may still change; see the [CHANGELOG](CHANGELOG.md). Install from the `next` tag.
 

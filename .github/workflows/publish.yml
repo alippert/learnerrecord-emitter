@@ -1,7 +1,6 @@
 # Publish @learnerrecord/emitter to npm: public, under the `next` dist-tag while LPAI's contract is 0.x,
-# with provenance, on a tag named v<version>. Uses npm trusted publishing (OIDC: no token stored) once
-# the package's trusted publisher names this repository and this file; until then (npm needs the
-# package to exist first) the NPM_TOKEN repository secret is the fallback.
+# with provenance, on a tag named v<version>, through npm trusted publishing: the package's trusted
+# publisher names this repository and this file, and the run's OIDC token is the only credential.
 name: publish
 on:
   push:
@@ -23,5 +22,4 @@ jobs:
       - run: npm test
       - run: npm run build
       - name: publish
-        env: { NODE_AUTH_TOKEN: "${{ secrets.NPM_TOKEN }}" }
         run: npm install -g npm@latest && npm publish --provenance --access public --tag next

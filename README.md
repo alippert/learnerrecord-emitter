@@ -88,7 +88,7 @@ The default queue lives in memory. A relay should pass a `store` with `load()` a
 
 `onOutcomes` receives each statement's outcome from the `x-lpai-outcomes` response header: `sealed`, `held` (the learner is not yet bound in your namespace), `unmapped` (stored, but the verb is not yet mapped) or `duplicate`. `flush()` returns them too.
 
-`onAlignment` is the hook for the `x-lpai-alignment` header: how your content is mapped to skills in LPAI's content-to-skill registry. **LPAI does not send that header yet.** The registry is not yet available, so the hook is never called today. Its contract: a status block once per content version, and again whenever the status changes.
+`onAlignment` receives the `x-lpai-alignment` response header: how the content your statements named is mapped to skills in LPAI's content registry, at what authority, and what that authority serves (engagement, proficiency, readiness, gating, credentials). LPAI sends a content version's status once per sensor and again whenever it changes (a new ETag); the emitter also de-duplicates by ETag. A status block lists `mapping_status` (`none`, `provisional`, `inferred`, `effective`), `alignment_type`, `authority`, `usable_for` and the skills with their roles and weights. When the header would pass 8 KB, LPAI sends part of it and `x-lpai-alignment-truncated: 1`; read the rest with `POST /v1/content/alignment/lookup`. An authoring tool registers content and declares its skills itself (the integrator guide, section 6).
 
 ## Native events
 
